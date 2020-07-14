@@ -1,0 +1,37 @@
+<html th:replace="~{layout.html :: layout(~{::title}, ~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title><th:block th:text="${sketch.name}">Recipe</th:block> - Sketchbook</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="body">
+<div class="content" >
+
+
+    <form method="post">
+        <div>
+            <h1 th:text="${sketch.name}">Recipe</h1>
+            <textarea name="content" rows="15" th:text="${sketch.content}"></textarea>
+        </div>
+        <div class="form-row-action">
+            <button form="delete" name="delete" type="button" onclick="del(this)">Delete</button>
+            <button name="save" type="submit">Save</button>
+        </div>
+    </form>
+
+    <form method="post" id="delete">
+        <input type="hidden" name="delete" />
+    </form>
+
+
+    <script>
+        function del(btn) {
+            if (confirm('Are you sure?')) {
+                btn.form.submit();
+            }
+        }
+    </script>
+
+</div>
+</body>
+</html>

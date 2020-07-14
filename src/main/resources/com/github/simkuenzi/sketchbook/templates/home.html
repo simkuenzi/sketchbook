@@ -1,0 +1,40 @@
+<html th:replace="~{layout.html :: layout(~{::title}, ~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview - Sketchbook</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="body">
+<div class="content" >
+
+    <div>
+        <h1>My Sketches</h1>
+        <ul th:remove="all-but-first">
+            <li th:each="sketch : ${sketchbook.sketches}"><a th:href="${sketch.name}" th:text="${sketch.name}" href="home.html">My Sketch</a></li>
+            <li><a href="home.html">UML Diag</a></li>
+            <li><a href="home.html">Recipe</a></li>
+        </ul>
+    </div>
+
+    <form method="post">
+        <h1>
+            New Sketch
+        </h1>
+        <div class="form-row">
+            <div class="form-label"><label for="name">Name</label></div>
+            <div class="form-input" th:class="${newSketch.valid}? 'form-input' : 'form-input-active form-input'">
+                <input id="name" name="name" type="text" th:value="${newSketch.name}" />
+                <div class="form-input-message">
+                    <span th:unless="${newSketch.valid}">Enter a valid sketch name /<th:block th:text="${newSketch.pattern}">[^()$]</th:block>/</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row-action">
+            <button type="submit" name="create">Create</button>
+        </div>
+    </form>
+
+
+</div>
+</body>
+</html>
