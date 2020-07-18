@@ -3,7 +3,9 @@ package com.github.simkuenzi.sketchbook;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.Collator;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +20,7 @@ public class FilesystemSketchbook implements Sketchbook {
     @Override
     public List<Sketch> getSketches() throws IOException {
         return Files.exists(path)
-                ? Files.list(path).map(Sketch::new).collect(Collectors.toList())
+                ? Files.list(path).map(Sketch::new).sorted(Comparator.comparing(Sketch::getName, Collator.getInstance())).collect(Collectors.toList())
                 : Collections.emptyList();
     }
 
