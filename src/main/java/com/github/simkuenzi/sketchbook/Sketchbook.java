@@ -7,4 +7,6 @@ public interface Sketchbook {
     List<Sketch> getSketches() throws IOException;
 
     Sketch sketch(String sketchName);
+
+    Sketch newSketch(String baseName);
 }

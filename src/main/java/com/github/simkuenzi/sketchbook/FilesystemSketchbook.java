@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FilesystemSketchbook implements Sketchbook {
     private final Path path;
@@ -24,5 +25,15 @@ public class FilesystemSketchbook implements Sketchbook {
     @Override
     public Sketch sketch(String sketchName) {
         return new Sketch(path.resolve(Path.of(sketchName)));
+    }
+
+    @Override
+    public Sketch newSketch(String baseName) {
+        return IntStream.range(1, 1000)
+                .mapToObj(i -> path.resolve(String.format("%s %d", baseName, i)))
+                .filter(p -> !Files.exists(p))
+                .map(Sketch::new)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException(String.format("Too many sketches with baseName %s.", baseName)));
     }
 }

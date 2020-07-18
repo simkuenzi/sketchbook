@@ -13,4 +13,9 @@ public class MissingSketchbook implements Sketchbook {
     public Sketch sketch(String sketchName) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public Sketch newSketch(String baseName) {
+        throw new UnsupportedOperationException();
+    }
 }

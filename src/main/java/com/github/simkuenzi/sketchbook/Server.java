@@ -1,10 +1,14 @@
 package com.github.simkuenzi.sketchbook;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.simkuenzi.service.LocalEndpoint;
+import com.github.simkuenzi.service.Registry;
 import io.javalin.Javalin;
 import io.javalin.core.compression.CompressionStrategy;
 import io.javalin.http.Context;
 import io.javalin.plugin.rendering.FileRenderer;
 import io.javalin.plugin.rendering.JavalinRenderer;
+import org.eclipse.jetty.http.HttpStatus;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -18,12 +22,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.regex.Pattern;
 
 public class Server {
 
-    public static void main(String[] args) {
-        int port = Integer.parseInt(System.getProperty("com.github.simkuenzi.http.port", "9001"));
+    public static void main(String[] args) throws IOException {
+        int port = Integer.parseInt(System.getProperty("com.github.simkuenzi.http.port", "9000"));
         String context = System.getProperty("com.github.simkuenzi.http.context", "/sketchbook");
 
         JavalinRenderer.register(renderer(), ".html");
@@ -68,7 +71,14 @@ public class Server {
                 sketch.save(ctx.formParam("content"));
                 ctx.render("sketch.html", model(ctx, sketchbook(ctx), sketch));
             }
+        })
+        .post("/api/:baseName", ctx -> {
+            String content = new ObjectMapper().readTree(ctx.body()).get("content").asText();
+            new IncomingSketch(ctx.pathParam("baseName"), content).save(sketchbook(ctx));
+            ctx.status(HttpStatus.NO_CONTENT_204);
         });
+
+        Registry.local.register("sketchbook", new LocalEndpoint(port, context));
     }
 
     private static Sketchbook sketchbook(Context ctx) throws IOException {
@@ -76,7 +86,7 @@ public class Server {
         Path pathFile = Path.of(System.getProperty("user.home"), "sketches");
         if (Files.exists(pathFile)) {
             List<String> lines = Files.readAllLines(pathFile);
-            sketchbook = lines.size() > 0 ? new FilesystemSketchbook(Path.of(lines.get(0), username(ctx))) : new MissingSketchbook();
+            sketchbook = lines.size() > 0 ? new FilesystemSketchbook(Path.of(lines.get(0), user(ctx))) : new MissingSketchbook();
         } else {
             sketchbook = new MissingSketchbook();
         }
@@ -94,7 +104,7 @@ public class Server {
     }
 
     private static Map<String, Object> model(Context ctx, Sketchbook sketchbook, SketchName newSketch) throws IOException {
-        String username = username(ctx);
+        String username = user(ctx);
         Map<String, Object> vars = new HashMap<>();
         Properties versionProps = new Properties();
         versionProps.load(Server.class.getResourceAsStream("version.properties"));
@@ -105,10 +115,9 @@ public class Server {
         return vars;
     }
 
-    private static String username(Context ctx) {
-        return ctx.headerMap().getOrDefault("X-SK-Auth", "anon");
+    private static String user(Context ctx) {
+        return ctx.headerMap().getOrDefault("X-SK-Auth", System.getProperty("com.github.simkuenzi.dev.user", "anon"));
     }
-
 
     private static FileRenderer renderer() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
