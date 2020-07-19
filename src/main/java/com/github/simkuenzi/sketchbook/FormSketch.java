@@ -18,7 +18,7 @@ public class FormSketch implements Sketch {
 
     @Override
     public SketchName getName() {
-        return new FormSketchName(form);
+        return new FormSketchName(sketchbook, form);
     }
 
     @Override

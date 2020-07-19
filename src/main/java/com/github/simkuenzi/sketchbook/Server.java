@@ -55,11 +55,12 @@ public class Server {
 
         .get("/", ctx -> ctx.render("home.html", model(ctx,  sketchbook(ctx))))
         .post("/", ctx -> {
-            SketchName newSketch = new FormSketchName(ctx.formParamMap());
+            Sketchbook sketchbook = sketchbook(ctx);
+            SketchName newSketch = new FormSketchName(sketchbook, ctx.formParamMap());
             if (newSketch.getValidity() == NameValidity.VALID) {
                 ctx.redirect(URLEncoder.encode(newSketch.getName(), StandardCharsets.UTF_8));
             } else {
-                ctx.render("home.html", model(ctx, sketchbook(ctx), newSketch));
+                ctx.render("home.html", model(ctx, sketchbook, newSketch));
             }
         })
         .get("/:name", ctx -> ctx.render("sketch.html",
