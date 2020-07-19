@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="form-input-active">
+
+    <div th:fragment="message" th:switch="${sketchName.validity.name()}" class="form-input-message">
+        <div th:case="'MALFORMED'">Enter a valid sketch name /<th:block th:text="${sketchName.pattern}">[^()$]</th:block>/</div>
+        <div th:case="'DUPLICATE_NAME'">There is already a sketch with this name</div>
+    </div>
+
+</body>
+
+
+</html>
+

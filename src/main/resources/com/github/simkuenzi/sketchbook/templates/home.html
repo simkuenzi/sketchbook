@@ -24,10 +24,9 @@
             <div class="form-label"><label for="name">Name</label></div>
             <div class="form-input" th:class="${newSketch.validity.name == 'VALID'}? 'form-input' : 'form-input-active form-input'">
                 <input id="name" name="name" type="text" th:value="${newSketch.name}" />
-                <div th:switch="${newSketch.validity.name()}" class="form-input-message">
-                    <span th:case="'MALFORMED'">Enter a valid sketch name /<th:block th:text="${newSketch.pattern}">[^()$]</th:block>/</span>
-                    <span th:case="'DUPLICATE_NAME'">There is already a sketch with this name</span>
-                </div>
+                <th:block th:with="sketchName=${newSketch}">
+                    <div class="form-input-message" th:replace="sketchName.html :: message"></div>
+                </th:block>
             </div>
         </div>
         <div class="form-row-action">
