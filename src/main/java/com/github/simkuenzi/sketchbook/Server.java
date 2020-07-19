@@ -15,6 +15,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,23 +55,26 @@ public class Server {
 
         .get("/", ctx -> ctx.render("home.html", model(ctx,  sketchbook(ctx))))
         .post("/", ctx -> {
-            SketchName newSketch = new FormSketchName(ctx);
-            if (newSketch.isValid()) {
-                ctx.redirect(newSketch.getName());
+            SketchName newSketch = new FormSketchName(ctx.formParamMap());
+            if (newSketch.getValidity() == NameValidity.VALID) {
+                ctx.redirect(URLEncoder.encode(newSketch.getName(), StandardCharsets.UTF_8));
             } else {
                 ctx.render("home.html", model(ctx, sketchbook(ctx), newSketch));
             }
         })
         .get("/:name", ctx -> ctx.render("sketch.html",
-                model(ctx, sketchbook(ctx),  sketchbook(ctx).sketch(ctx.pathParam("name")))))
+                model(ctx, sketchbook(ctx), sketchbook(ctx).sketch(URLDecoder.decode(ctx.pathParam("name"), StandardCharsets.UTF_8)))))
         .post("/:name", ctx -> {
-            Sketch sketch = sketchbook(ctx).sketch(ctx.pathParam("name"));
+            Sketchbook sketchbook = sketchbook(ctx);
+            ValidSketch sketch = sketchbook.sketch(URLDecoder.decode(ctx.pathParam("name"), StandardCharsets.UTF_8));
             if (ctx.formParamMap().containsKey("delete")) {
                 sketch.delete();
                 ctx.redirect(ctx.contextPath());
             } else {
-                sketch.save(ctx.formParam("content"));
-                ctx.render("sketch.html", model(ctx, sketchbook(ctx), sketch));
+                FormSketch formSketch = new FormSketch(sketchbook, ctx.pathParam("name"), ctx.formParamMap());
+                formSketch.save(
+                        s -> ctx.render("sketch.html", model(ctx, sketchbook, s)),
+                        s -> ctx.redirect(URLEncoder.encode(s.getValidName(), StandardCharsets.UTF_8)));
             }
         })
         .post("/api/:baseName", ctx -> {

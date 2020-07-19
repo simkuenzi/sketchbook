@@ -10,7 +10,7 @@
     <div>
         <h1>My Sketches</h1>
         <ul th:remove="all-but-first">
-            <li th:each="sketch : ${sketchbook.sketches}"><a th:href="${sketch.name}" th:text="${sketch.name}" href="home.html">My Sketch</a></li>
+            <li th:each="sketch : ${sketchbook.sketches}"><a th:href="${sketch.name.name}" th:text="${sketch.name.name}" href="home.html">My Sketch</a></li>
             <li><a href="home.html">UML Diag</a></li>
             <li><a href="home.html">Recipe</a></li>
         </ul>
@@ -22,10 +22,11 @@
         </h1>
         <div class="form-row">
             <div class="form-label"><label for="name">Name</label></div>
-            <div class="form-input" th:class="${newSketch.valid}? 'form-input' : 'form-input-active form-input'">
+            <div class="form-input" th:class="${newSketch.validity.name == 'VALID'}? 'form-input' : 'form-input-active form-input'">
                 <input id="name" name="name" type="text" th:value="${newSketch.name}" />
-                <div class="form-input-message">
-                    <span th:unless="${newSketch.valid}">Enter a valid sketch name /<th:block th:text="${newSketch.pattern}">[^()$]</th:block>/</span>
+                <div th:switch="${newSketch.validity.name()}" class="form-input-message">
+                    <span th:case="'MALFORMED'">Enter a valid sketch name /<th:block th:text="${newSketch.pattern}">[^()$]</th:block>/</span>
+                    <span th:case="'DUPLICATE_NAME'">There is already a sketch with this name</span>
                 </div>
             </div>
         </div>

@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 public interface Sketchbook {
-    List<Sketch> getSketches() throws IOException;
+    List<ValidSketch> getSketches() throws IOException;
 
-    Sketch sketch(String sketchName);
+    ValidSketch sketch(String sketchName);
 
-    Sketch newSketch(String baseName);
+    ValidSketch newSketch(String baseName);
 }

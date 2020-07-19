@@ -1,7 +1,7 @@
 package com.github.simkuenzi.sketchbook;
 
-import io.javalin.http.Context;
-
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class FormSketchName implements SketchName {
@@ -10,20 +10,22 @@ public class FormSketchName implements SketchName {
     private static final Pattern SKETCH_NAME_PATTERN = Pattern.compile(SKETCH_NAME_REGEX);
     private static final String FORM_PARAM_NAME = "name";
 
-    private final Context ctx;
+    private final Map<String, List<String>> form;
 
-    public FormSketchName(Context ctx) {
-        this.ctx = ctx;
+    public FormSketchName(Map<String, List<String>> form) {
+        this.form = form;
     }
 
     @Override
     public String getName() {
-        return ctx.formParamMap().containsKey(FORM_PARAM_NAME) ? ctx.formParam(FORM_PARAM_NAME) : "";
+        return form.containsKey(FORM_PARAM_NAME) ? form.get(FORM_PARAM_NAME).get(0) : "";
     }
 
     @Override
-    public boolean isValid() {
-        return ctx.formParamMap().containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getName()).matches();
+    public NameValidity getValidity() {
+        return form.containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getName()).matches()
+                ? NameValidity.VALID
+                : NameValidity.MALFORMED;
     }
 
     @Override

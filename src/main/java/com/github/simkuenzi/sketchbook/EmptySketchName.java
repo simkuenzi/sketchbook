@@ -7,7 +7,7 @@ public class EmptySketchName implements SketchName {
     }
 
     @Override
-    public boolean isValid() {
-        return true;
+    public NameValidity getValidity() {
+        return NameValidity.VALID;
     }
 }

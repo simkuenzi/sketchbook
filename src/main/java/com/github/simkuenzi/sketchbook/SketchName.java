@@ -7,5 +7,5 @@ public interface SketchName {
         return "";
     }
 
-    boolean isValid();
+    NameValidity getValidity();
 }

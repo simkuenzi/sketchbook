@@ -100,14 +100,26 @@
     border-radius: 4px;
 }
 
+.form-input-large {
+    width: 100%;
+    float: right;
+    margin-top: 6px;
+    background-color: lightgray;
+    border-radius: 4px;
+}
+
+.form-input-active {
+    background-color: var(--dark);
+}
+
 .form-input-message {
     padding: 5px;
     height: 26px;
     color: white;
 }
 
-.form-input-active {
-    background-color: var(--dark);
+.form-row {
+    margin-bottom: 10px;
 }
 
 .form-row:after {

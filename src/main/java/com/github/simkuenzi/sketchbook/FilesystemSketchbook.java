@@ -18,23 +18,23 @@ public class FilesystemSketchbook implements Sketchbook {
     }
 
     @Override
-    public List<Sketch> getSketches() throws IOException {
+    public List<ValidSketch> getSketches() throws IOException {
         return Files.exists(path)
-                ? Files.list(path).map(Sketch::new).sorted(Comparator.comparing(Sketch::getName, Collator.getInstance())).collect(Collectors.toList())
+                ? Files.list(path).map(FilesystemSketch::new).sorted(Comparator.comparing(ValidSketch::getValidName, Collator.getInstance())).collect(Collectors.toList())
                 : Collections.emptyList();
     }
 
     @Override
-    public Sketch sketch(String sketchName) {
-        return new Sketch(path.resolve(Path.of(sketchName)));
+    public ValidSketch sketch(String sketchName) {
+        return new FilesystemSketch(path.resolve(Path.of(sketchName)));
     }
 
     @Override
-    public Sketch newSketch(String baseName) {
+    public ValidSketch newSketch(String baseName) {
         return IntStream.range(1, 1000)
                 .mapToObj(i -> path.resolve(String.format("%s %d", baseName, i)))
                 .filter(p -> !Files.exists(p))
-                .map(Sketch::new)
+                .map(FilesystemSketch::new)
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException(String.format("Too many sketches with baseName %s.", baseName)));
     }

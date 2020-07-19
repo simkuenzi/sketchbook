@@ -9,8 +9,16 @@
 
 
     <form method="post">
-        <div>
-            <h1 th:text="${sketch.name}">Recipe</h1>
+        <div class="form-row">
+            <div class="form-input-large" th:class="${sketch.name.validity.name() == 'VALID'} ? 'form-input-large' : 'form-input-active form-input-large'">
+                <input name="name" type="text" th:value="${sketch.name.name}" value="Recipe" />
+                <div th:switch="${sketch.name.validity.name()}" class="form-input-message">
+                    <span th:case="'MALFORMED'">Enter a valid sketch name /<th:block th:text="${sketch.name.pattern}">[^()$]</th:block>/</span>
+                    <span th:case="'DUPLICATE_NAME'">There is already a sketch with this name</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
             <textarea name="content" rows="15" th:text="${sketch.content}"></textarea>
         </div>
         <div class="form-row-action">

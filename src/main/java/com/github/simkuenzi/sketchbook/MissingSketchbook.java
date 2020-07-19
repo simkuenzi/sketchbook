@@ -5,17 +5,17 @@ import java.util.List;
 
 public class MissingSketchbook implements Sketchbook {
     @Override
-    public List<Sketch> getSketches() {
+    public List<ValidSketch> getSketches() {
         return Collections.emptyList();
     }
 
     @Override
-    public Sketch sketch(String sketchName) {
+    public ValidSketch sketch(String sketchName) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Sketch newSketch(String baseName) {
+    public ValidSketch newSketch(String baseName) {
         throw new UnsupportedOperationException();
     }
 }
