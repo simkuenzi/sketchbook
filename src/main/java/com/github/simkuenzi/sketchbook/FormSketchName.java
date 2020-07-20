@@ -25,10 +25,8 @@ public class FormSketchName implements SketchName {
     }
 
     @Override
-    public NameValidity getValidity() throws IOException {
-        if (sketchbook.getSketches().stream().anyMatch(other -> other.getValidName().equals(getValue()))) {
-            return NameValidity.DUPLICATE_NAME;
-        } else if (form.containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getValue()).matches()) {
+    public NameValidity getValidity() {
+        if (form.containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getValue()).matches()) {
             return NameValidity.VALID;
         } else {
             return NameValidity.MALFORMED;

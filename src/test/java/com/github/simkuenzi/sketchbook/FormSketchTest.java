@@ -69,6 +69,7 @@ public class FormSketchTest {
             formSketch.save(s -> {
                         assertEquals("name", s.getName().getValue());
                         assertEquals("newContent", s.getContent());
+                        assertEquals(NameValidity.VALID, s.getName().getValidity());
                     },
                     s -> fail());
         });
