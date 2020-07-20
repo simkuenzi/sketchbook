@@ -17,6 +17,11 @@ public class FormSketch implements Sketch {
     }
 
     @Override
+    public SketchId getId() {
+        return id;
+    }
+
+    @Override
     public SketchName getName() {
         return new FormSketchName(sketchbook, form);
     }

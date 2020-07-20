@@ -10,6 +10,11 @@ public class DuplicateSketch implements Sketch {
     }
 
     @Override
+    public SketchId getId() {
+        return sketch.getId();
+    }
+
+    @Override
     public SketchName getName() {
         return new DuplicateSketchName(sketch.getName());
     }
