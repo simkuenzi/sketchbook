@@ -25,14 +25,14 @@ public class FilesystemSketchbook implements Sketchbook {
     }
 
     @Override
-    public ValidSketch sketch(String sketchName) {
-        return new FilesystemSketch(path.resolve(Path.of(sketchName)));
+    public ValidSketch sketch(SketchId id) {
+        return new FilesystemSketch(path.resolve(id.asPath()));
     }
 
     @Override
     public ValidSketch newSketch(String baseName) {
         return IntStream.range(1, 1000)
-                .mapToObj(i -> path.resolve(String.format("%s %d", baseName, i)))
+                .mapToObj(i -> path.resolve(SketchId.forName(String.format("%s %d", baseName, i)).asPath()))
                 .filter(p -> !Files.exists(p))
                 .map(FilesystemSketch::new)
                 .findFirst()

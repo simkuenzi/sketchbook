@@ -13,7 +13,7 @@ public class FormSketchNameTest {
     public void duplicate() throws Exception {
         new TestFs().use(testFs -> {
             Sketchbook sketchbook = new FilesystemSketchbook(testFs);
-            sketchbook.sketch("existing").save("content");
+            sketchbook.sketch(SketchId.forName("existing")).save("content");
 
             SketchName sketchName = new FormSketchName(sketchbook, Map.of("name", Collections.singletonList("existing")));
             assertEquals(NameValidity.DUPLICATE_NAME, sketchName.getValidity());

@@ -10,7 +10,7 @@ public class MissingSketchbook implements Sketchbook {
     }
 
     @Override
-    public ValidSketch sketch(String sketchName) {
+    public ValidSketch sketch(SketchId id) {
         throw new UnsupportedOperationException();
     }
 

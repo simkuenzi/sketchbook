@@ -7,12 +7,12 @@ import java.util.Map;
 public class FormSketch implements Sketch {
 
     private final Sketchbook sketchbook;
-    private final String name;
+    private final SketchId id;
     private final Map<String, List<String>> form;
 
-    public FormSketch(Sketchbook sketchbook, String name, Map<String, List<String>> form) {
+    public FormSketch(Sketchbook sketchbook, SketchId id, Map<String, List<String>> form) {
         this.sketchbook = sketchbook;
-        this.name = name;
+        this.id = id;
         this.form = form;
     }
 
@@ -28,7 +28,7 @@ public class FormSketch implements Sketch {
 
     public void save(Action<Sketch> onStay, Action<ValidSketch> onMove) throws Exception {
         if (getName().getValidity() == NameValidity.VALID) {
-            ValidSketch sketch = sketchbook.sketch(name);
+            ValidSketch sketch = sketchbook.sketch(id);
             sketch.save(getName().getName(), getContent(),
                     newSketch -> {
                         if (newSketch != sketch) {

@@ -16,7 +16,7 @@ public class FilesystemSketch implements ValidSketch {
         return new SketchName() {
             @Override
             public String getName() {
-                return path.getFileName().toString();
+                return getId().asName();
             }
 
             @Override
@@ -24,6 +24,11 @@ public class FilesystemSketch implements ValidSketch {
                 return NameValidity.VALID;
             }
         };
+    }
+
+    @Override
+    public SketchId getId() {
+        return SketchId.forPath(path);
     }
 
     @Override
@@ -45,7 +50,7 @@ public class FilesystemSketch implements ValidSketch {
     @Override
     public void save(String newName, String newContent, Action<ValidSketch> onSave, Action<ValidSketch> onDuplicate) throws Exception {
         save(newContent);
-        Path newPath = path.getParent().resolve(newName);
+        Path newPath = path.getParent().resolve(SketchId.forName(newName).asPath());
         if (!path.equals(newPath)) {
             if (!Files.exists(newPath)) {
                 Files.move(path, newPath);

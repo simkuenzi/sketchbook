@@ -6,7 +6,7 @@ import java.util.List;
 public interface Sketchbook {
     List<ValidSketch> getSketches() throws IOException;
 
-    ValidSketch sketch(String sketchName);
+    ValidSketch sketch(SketchId id);
 
     ValidSketch newSketch(String baseName);
 }

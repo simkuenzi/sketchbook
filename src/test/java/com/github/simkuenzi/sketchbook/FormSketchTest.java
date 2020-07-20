@@ -19,7 +19,7 @@ public class FormSketchTest {
             sketch.save("origContent");
 
             Sketchbook sketchbook = new FilesystemSketchbook(testFs);
-            FormSketch formSketch = new FormSketch(sketchbook, "origName", Map.of(
+            FormSketch formSketch = new FormSketch(sketchbook, SketchId.forName("origName"), Map.of(
                     "name", Collections.singletonList("newName"),
                     "content", Collections.singletonList("newContent")));
 
@@ -40,7 +40,7 @@ public class FormSketchTest {
             new FilesystemSketch(testFs.resolve("newName")).save("otherContent");
 
             Sketchbook sketchbook = new FilesystemSketchbook(testFs);
-            FormSketch formSketch = new FormSketch(sketchbook, "origName", Map.of(
+            FormSketch formSketch = new FormSketch(sketchbook, SketchId.forName("origName"), Map.of(
                     "name", Collections.singletonList("newName"),
                     "content", Collections.singletonList("newContent")));
 
@@ -62,7 +62,7 @@ public class FormSketchTest {
             sketch.save("origContent");
 
             Sketchbook sketchbook = new FilesystemSketchbook(testFs);
-            FormSketch formSketch = new FormSketch(sketchbook, "name", Map.of(
+            FormSketch formSketch = new FormSketch(sketchbook, SketchId.forName("name"), Map.of(
                     "name", Collections.singletonList("name"),
                     "content", Collections.singletonList("newContent")));
 
