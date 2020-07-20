@@ -7,6 +7,12 @@
 <body class="body">
 <div class="content" >
 
+    <div class="nav">
+        <a href="home.html" th:href="@{/}">Sketchbook</a>
+        <span> &gt; </span>
+        <a href="sketch.html" th:href="@{/{sketchId}(sketchId=${sketch.id})}" th:text="${sketch.name.value}">Recipe</a>
+    </div>
+
 
     <form method="post">
         <div class="form-row">

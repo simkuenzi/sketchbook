@@ -78,6 +78,10 @@
     display: inline-block;
 }
 
+.nav {
+    margin-bottom: 20px;
+}
+
 .form-section {
     border-style: solid;
     border-width: 1px;
