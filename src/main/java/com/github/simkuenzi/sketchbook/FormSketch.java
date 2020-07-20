@@ -29,7 +29,7 @@ public class FormSketch implements Sketch {
     public void save(Action<Sketch> onStay, Action<ValidSketch> onMove) throws Exception {
         if (getName().getValidity() == NameValidity.VALID) {
             ValidSketch sketch = sketchbook.sketch(id);
-            sketch.save(getName().getName(), getContent(),
+            sketch.save(getName().getValue(), getContent(),
                     newSketch -> {
                         if (newSketch != sketch) {
                             onMove.apply(newSketch);

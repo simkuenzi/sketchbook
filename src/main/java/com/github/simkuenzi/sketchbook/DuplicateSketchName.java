@@ -8,8 +8,8 @@ public class DuplicateSketchName implements SketchName {
     }
 
     @Override
-    public String getName() {
-        return name.getName();
+    public String getValue() {
+        return name.getValue();
     }
 
     @Override

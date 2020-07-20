@@ -10,7 +10,7 @@
     <div>
         <h1>My Sketches</h1>
         <ul th:remove="all-but-first">
-            <li th:each="sketch : ${sketchbook.sketches}"><a th:href="${sketch.id}" th:text="${sketch.name.name}" href="home.html">My Sketch</a></li>
+            <li th:each="sketch : ${sketchbook.sketches}"><a th:href="${sketch.id}" th:text="${sketch.name.value}" href="home.html">My Sketch</a></li>
             <li><a href="home.html">UML Diag</a></li>
             <li><a href="home.html">Recipe</a></li>
         </ul>
@@ -23,7 +23,7 @@
         <div class="form-row">
             <div class="form-label"><label for="name">Name</label></div>
             <div class="form-input" th:class="${newSketch.validity.name == 'VALID'}? 'form-input' : 'form-input-active form-input'">
-                <input id="name" name="name" type="text" th:value="${newSketch.name}" />
+                <input id="name" name="name" type="text" th:value="${newSketch.value}" />
                 <th:block th:with="sketchName=${newSketch}">
                     <div class="form-input-message" th:replace="sketchName.html :: message"></div>
                 </th:block>

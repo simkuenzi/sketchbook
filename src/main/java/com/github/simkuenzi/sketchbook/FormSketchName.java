@@ -20,15 +20,15 @@ public class FormSketchName implements SketchName {
     }
 
     @Override
-    public String getName() {
+    public String getValue() {
         return form.containsKey(FORM_PARAM_NAME) ? form.get(FORM_PARAM_NAME).get(0) : "";
     }
 
     @Override
     public NameValidity getValidity() throws IOException {
-        if (sketchbook.getSketches().stream().anyMatch(other -> other.getValidName().equals(getName()))) {
+        if (sketchbook.getSketches().stream().anyMatch(other -> other.getValidName().equals(getValue()))) {
             return NameValidity.DUPLICATE_NAME;
-        } else if (form.containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getName()).matches()) {
+        } else if (form.containsKey(FORM_PARAM_NAME) && SKETCH_NAME_PATTERN.matcher(getValue()).matches()) {
             return NameValidity.VALID;
         } else {
             return NameValidity.MALFORMED;

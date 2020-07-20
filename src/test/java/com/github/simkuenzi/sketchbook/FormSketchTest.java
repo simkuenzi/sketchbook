@@ -46,7 +46,7 @@ public class FormSketchTest {
 
             formSketch.save(
                     s -> {
-                        assertEquals("newName", s.getName().getName());
+                        assertEquals("newName", s.getName().getValue());
                         assertEquals(NameValidity.DUPLICATE_NAME, s.getName().getValidity());
                         assertEquals("newContent", s.getContent());
                     },
@@ -67,7 +67,7 @@ public class FormSketchTest {
                     "content", Collections.singletonList("newContent")));
 
             formSketch.save(s -> {
-                        assertEquals("name", s.getName().getName());
+                        assertEquals("name", s.getName().getValue());
                         assertEquals("newContent", s.getContent());
                     },
                     s -> fail());

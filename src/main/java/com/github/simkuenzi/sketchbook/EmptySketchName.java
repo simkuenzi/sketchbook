@@ -2,7 +2,7 @@ package com.github.simkuenzi.sketchbook;
 
 public class EmptySketchName implements SketchName {
     @Override
-    public String getName() {
+    public String getValue() {
         return "";
     }
 

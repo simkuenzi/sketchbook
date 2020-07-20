@@ -1,7 +1,7 @@
 <html th:replace="~{layout.html :: layout(~{::title}, ~{::div})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title><th:block th:text="${sketch.name}">Recipe</th:block> - Sketchbook</title>
+    <title><th:block th:text="${sketch.name.value}">Recipe</th:block> - Sketchbook</title>
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body class="body">
@@ -11,7 +11,7 @@
     <form method="post">
         <div class="form-row">
             <div class="form-input-large" th:class="${sketch.name.validity.name() == 'VALID'} ? 'form-input-large' : 'form-input-active form-input-large'">
-                <input name="name" type="text" th:value="${sketch.name.name}" value="Recipe" />
+                <input name="name" type="text" th:value="${sketch.name.value}" value="Recipe" />
                 <th:block th:with="sketchName=${sketch.name}">
                     <div class="form-input-message" th:replace="sketchName.html :: message"></div>
                 </th:block>

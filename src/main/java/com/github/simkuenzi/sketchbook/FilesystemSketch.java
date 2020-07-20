@@ -15,7 +15,7 @@ public class FilesystemSketch implements ValidSketch {
     public SketchName getName() {
         return new SketchName() {
             @Override
-            public String getName() {
+            public String getValue() {
                 return getId().asName();
             }
 
@@ -33,7 +33,7 @@ public class FilesystemSketch implements ValidSketch {
 
     @Override
     public String getValidName() {
-        return getName().getName();
+        return getName().getValue();
     }
 
     @Override

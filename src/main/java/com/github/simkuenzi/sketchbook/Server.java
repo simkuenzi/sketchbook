@@ -57,7 +57,7 @@ public class Server {
             Sketchbook sketchbook = sketchbook(ctx);
             SketchName newSketch = new FormSketchName(sketchbook, ctx.formParamMap());
             if (newSketch.getValidity() == NameValidity.VALID) {
-                ctx.redirect(URLEncoder.encode(SketchId.forName(newSketch.getName()).toString(), StandardCharsets.UTF_8));
+                ctx.redirect(URLEncoder.encode(SketchId.forName(newSketch.getValue()).toString(), StandardCharsets.UTF_8));
             } else {
                 ctx.render("home.html", model(ctx, sketchbook, newSketch));
             }
