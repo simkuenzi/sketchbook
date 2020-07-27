@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><test>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/change" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">change</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">Hello
+World</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/change" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/change"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="74"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">name=change&amp;content=Hello%0D%0AWorld%0D%0A%0D%0AMore+Text+here%0D%0A&amp;save=</payload><assertion selector="input[name=name]"><expectedAttr xml:space="preserve" name="value">change</expectedAttr></assertion><assertion selector="input[name=delete]"><expectedAttr xml:space="preserve" name="value"/></assertion><assertion selector="textarea[name=content]"><expectedText xml:space="preserve">Hello
+World
+
+More Text here</expectedText></assertion></request>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/change"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/change" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">change</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">Hello
+World
+
+More Text here</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/change"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/rename" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">rename</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">This file will be renamed.</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/rename" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="72"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">name=rename+with+new+name&amp;content=This+file+will+be+renamed.%0D%0A&amp;save=</payload></request>
+  <request urlPath="/sketchbook/rename_%2Bwith_%2Bnew_%2Bname" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">rename with new name</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">This file will be renamed.</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename_%2Bwith_%2Bnew_%2Bname"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/rename_and_change" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">rename_and_change</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">And this will be renamed to.
+And even changed!</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/rename_and_change" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename_and_change"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="134"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">name=rename_and_change+new_name%2B&amp;content=And+this+will+be+renamed+to.%0D%0AAnd+even+changed%21%0D%0A%0D%0AI+am+typing%21%0D%0A&amp;save=</payload></request>
+  <request urlPath="/sketchbook/rename__and__change_%2Bnew__name%2B" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename_and_change"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">rename_and_change new_name+</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">And this will be renamed to.
+And even changed!
+
+I am typing!</expectedText></assertion>
+  </request>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/rename__and__change_%2Bnew__name%2B"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="20"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">name=New+One&amp;create=</payload></request>
+  <request urlPath="/sketchbook/New_%2BOne" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">New One</expectedAttr></assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve"/></assertion>
+  </request>
+  <request urlPath="/sketchbook/New_%2BOne" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/New_%2BOne"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="53"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">name=New+One&amp;content=Will+be+deletet+again+%3AD&amp;save=</payload>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value">New One</expectedAttr>
+    </assertion>
+    <assertion selector="input[name=delete]">
+      <expectedAttr xml:space="preserve" name="value"/>
+    </assertion>
+    <assertion selector="textarea[name=content]">
+      <expectedText xml:space="preserve">Will be deletet again :D</expectedText>
+    </assertion>
+  </request>
+  <request urlPath="/sketchbook/New_%2BOne" method="POST">
+    <header name="Origin" value="http://localhost:22016"/>
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/New_%2BOne"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Length" value="7"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <payload xml:space="preserve">delete=</payload></request>
+  <request urlPath="/sketchbook/" method="GET">
+    <header name="Cookie" value="Idea-5a9c36e2=574dae78-d212-43b7-ad16-cb54faff9a1f; session=IWzYbb9VR/u4TPYWRFJKzZ3WOfFb9S+pDPTux1/t3b7hsGAk2/xSyDqP28cwJl6Dl1Uh0EZpKAgzXpewsfL5GRMAik5qJDq0"/>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"/>
+    <header name="Upgrade-Insecure-Requests" value="1"/>
+    <header name="User-Agent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"/>
+    <header name="Referer" value="http://localhost:22016/sketchbook/New_%2BOne"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Host" value="localhost:22016"/>
+    <header name="Accept-Language" value="de,en-US;q=0.7,en;q=0.3"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <assertion selector="input[name=name]">
+      <expectedAttr xml:space="preserve" name="value"/></assertion>
+  </request>
+</test>

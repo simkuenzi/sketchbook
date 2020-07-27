@@ -4,12 +4,16 @@ plugins {
     id 'net.researchgate.release' version '2.8.1'
     id "maven-publish"
     id "org.hidetake.ssh" version "2.10.1"
+    id 'com.github.simkuenzi.webplay' version '0.1'
 }
 
 group 'com.github.simkuenzi'
 version version
 
-sourceCompatibility = 14
+java {
+    sourceCompatibility JavaVersion.VERSION_14
+    targetCompatibility JavaVersion.VERSION_14
+}
 
 application {
     mainClass = 'com.github.simkuenzi.sketchbook.Server'
@@ -27,6 +31,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:  '2.11.1'
     implementation group: 'com.github.simkuenzi', name: 'service', version: '0.0'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'com.github.simkuenzi', name: 'webplay', version: '1.1'
 }
 
 test {
@@ -98,4 +103,10 @@ classes {
 
 release {
     buildTasks = ['publish', 'deploy']
+}
+
+webplay {
+    recordTo = file('src/test/resources/com/github/simkuenzi/sketchbook/test.xml')
+    appPort = 9000
+    startPath = "/sketchbook"
 }

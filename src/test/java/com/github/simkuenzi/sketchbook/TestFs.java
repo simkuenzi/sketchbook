@@ -19,6 +19,7 @@ class TestFs {
             });
         }
 
+        Files.createDirectories(testPath);
         test.run(testPath);
     }
 

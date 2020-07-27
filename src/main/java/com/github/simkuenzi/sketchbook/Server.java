@@ -29,10 +29,26 @@ public class Server {
     public static void main(String[] args) throws IOException {
         int port = Integer.parseInt(System.getProperty("com.github.simkuenzi.http.port", "9000"));
         String context = System.getProperty("com.github.simkuenzi.http.context", "/sketchbook");
+        Path pathFile = Path.of(System.getProperty("user.home"), "sketches");
 
+        new Server(port, context, pathFile).start();
+    }
+
+    private final int port;
+    private final String context;
+    private final Path pathFile;
+    private Javalin app;
+
+    public Server(int port, String context, Path pathFile) {
+        this.port = port;
+        this.context = context;
+        this.pathFile = pathFile;
+    }
+
+    public void start() throws IOException {
         JavalinRenderer.register(renderer(), ".html");
 
-        Javalin.create(config -> {
+        app = Javalin.create(config -> {
             config.contextPath = context;
             config.addStaticFiles("com/github/simkuenzi/sketchbook/static/");
 
@@ -86,9 +102,12 @@ public class Server {
         Registry.local.register("sketchbook", new LocalEndpoint(port, context));
     }
 
-    private static Sketchbook sketchbook(Context ctx) throws IOException {
+    public void stop() {
+        app.stop();
+    }
+
+    private Sketchbook sketchbook(Context ctx) throws IOException {
         Sketchbook sketchbook;
-        Path pathFile = Path.of(System.getProperty("user.home"), "sketches");
         if (Files.exists(pathFile)) {
             List<String> lines = Files.readAllLines(pathFile);
             sketchbook = lines.size() > 0 ? new FilesystemSketchbook(Path.of(lines.get(0), user(ctx))) : new MissingSketchbook();
